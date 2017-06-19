@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <link href="css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Teletransportacion</title>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      //document.getElementById("btn-Salamanca").value = "click";
+      //document.getElementsByClassName("btn-ciudad btn disponible").onclick = buttonSelectCiudad(this);
+      var x = document.getElementsByClassName("btn-ciudad btn disponible");
+      for (var i = 0; i < x.length; i++) {
+        x[i].setAttribute('onclick', 'buttonSelectCiudad(this)');
+      }
+
+      x = document.getElementsByClassName("lista-dir");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = 'none';
+      }
+      x = document.getElementsByClassName("btn-portal btn disponible");
+      for (var i = 0; i < x.length; i++) {
+        x[i].setAttribute('onclick', 'buttonSelectDir(this)');
+      }
+    }
+
+    function buttonSelectCiudad(btn) {
+      var selButton = btn;
+      var x = document.getElementsByClassName("btn-ciudad btn seleccionado");
+      for (var i = 0; i < x.length; i++) {
+        x[i].className = "btn-ciudad btn disponible";
+      }
+      selButton.className = "btn-ciudad btn seleccionado";
+
+      x = document.getElementsByClassName("btn-portal btn seleccionado");
+      for (var i = 0; i < x.length; i++) {
+        x[i].className = "btn-portal btn disponible";
+      }
+
+      var span_ciudad = document.getElementById("dir-ciudad");
+      if (span_ciudad.innerHTML.length != 0) {
+        document.getElementById("lista-" + span_ciudad.innerHTML).style.display = 'none';
+      }
+
+      span_ciudad.innerHTML = selButton.value;
+      document.getElementById("dir-portal-teletransportar").innerHTML = "";
+      document.getElementById("dir-ciudad-teletransportar").innerHTML = " " + selButton.value;
+      document.getElementById("lista-" + selButton.value).style.display = 'flex';
+
+      var espacio = /\s/g;
+      var linkMapa = selButton.value.replace(espacio, '');
+      linkMapa = "Mapa" + linkMapa + ".html";
+
+      document.getElementById("link-teletransportar").href = linkMapa;
+
+      document.getElementById("div-teletransportar").style.display = 'none';
+
+    }
+
+    function buttonSelectDir(btn) {
+      var selButton = btn;
+      document.getElementById("dir-portal-teletransportar").innerHTML = " > " + selButton.value;
+      document.getElementById("div-teletransportar").style.display = 'inline-block';
+
+      var x = document.getElementsByClassName("btn-portal btn seleccionado");
+      for (var i = 0; i < x.length; i++) {
+        x[i].className = "btn-portal btn disponible";
+      }
+      selButton.className = "btn-portal btn seleccionado";
+
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <header class="header" id="header">
+    <h3>Por favor , elija su ciudad destino
+      <span>></span>
+      <span>Elija el portal destino</span>
+      <span>></span>
+      <span>Haga click en TELETRANSPORTAR</span>
+    </h3>
+  </header>
+  <div class="header">
+    <h2>TELETRANSPORTAR A:<span class="dir" id="dir-ciudad-teletransportar"></span> <span class="dir" id="dir-portal-teletransportar"></span></h2>
+  </div>
+  <div class="wrapper-main">
+    <div class="wrapper-flex">
+      <div class="wrapper-flex-side main-side">
+        <div class="wrapper-btn" id="div-btn-atras">
+          <a href="Index.html">
+            <i class="material-icons">arrow_back</i>
+            <span>Atras</span>
+          </a>
+        </div>
+        <div class="wrapper-dir">
+          <p>Provincia: <span class="dir" id="dir-provincia">Salamanca</span></p>
+        </div>
+        <div class="wrapper-lista">
+          <ul class="lista" id="lista-ciudades">
+            <li class="li-ciudad"><input class="btn-ciudad btn disponible" type="button" id="btn-Salamanca" value="Salamanca"></li>
+            <li class="li-ciudad"><input class="btn-ciudad btn disponible" type="button" id="btn-Ciudad_Rodrigo" value="Ciudad Rodrigo"></li>
+            <li class="li-ciudad"><input class="btn-ciudad btn disponible" type="button" id="btn-Bejar" value="Bejar"></li>
+            <li class="li-ciudad"><input class="btn-ciudad btn no_disponible" type="button" id="btn-Vitigudino" value="Vitigudino"></li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="wrapper-flex-side main-side">
+        <div class="wrapper-btn" id="div-btn-mapa">
+          <a id="link-teletransportar" href="#">
+            <span>Ver localizaciones</span>
+            <i class="material-icons">map</i>
+          </a>
+        </div>
+        <div class="wrapper-dir">
+          <p>Ciudad: <span class="dir" id="dir-ciudad"></span></p>
+        </div>
+        <div class="wrapper-lista">
+          <ul class="lista lista-dir" id="lista-Salamanca">
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Salamanca1" value="1 - Ayuntamiento"></li>
+            <li class="li-portal"><input class="btn-portal btn no_disponible" type="button" id="btn-Salamanca2" value="2 - Plaza de Anaya"></li>
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Salamanca3" value="3 - Estación de trenes"></li>
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Salamanca4" value="4 - Campus universitario"></li>
+          </ul>
+          <ul class="lista lista-dir" id="lista-Ciudad Rodrigo">
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Ciudad_Rodrigo1" value="1 - Ayuntamiento"></li>
+            <li class="li-portal"><input class="btn-portal btn no_disponible" type="button" id="btn-Ciudad_Rodrigo2" value="2 - Plaza Sto Domingo"></li>
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Ciudad_Rodrigo3" value="3 - Avenida España"></li>
+          </ul>
+          <ul class="lista lista-dir" id="lista-Bejar">
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Bejar1" value="1 - Ayuntamiento"></li>
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Bejar2" value="2 - Calle Colón"></li>
+            <li class="li-portal"><input class="btn-portal btn disponible" type="button" id="btn-Bejar3" value="3 - Plaza Sta Teresa"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="wrapper-flex">
+    <div class="wrapper-flex-side" id="div-leyenda">
+      <ul id="leyenda">
+        <li id="leyenda-disponible"><span>Disponible</span></li>
+        <li id="leyenda-no_disponible"><span>No disponible</span></li>
+        <li id="leyenda-seleccionado"><span>Seleccionado</span></li>
+      </ul>
+    </div>
+    <div class="wrapper-flex-side teletransportar">
+      <div id="div-teletransportar">
+        <a href="Teletransporte.html">
+          <input class="btn-teletransportar btn disponible" type="button" id="btn-teletransportar" value="TELETRANSPORTAR">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
