@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <link href="css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Teletransportacion</title>
+
+  <script>
+    window.onload = function() {
+
+      move();
+
+    }
+
+    function move() {
+      var msg = document.getElementById("mensaje-teletransporte");
+      var etapa = document.getElementById("etapa-teletransporte");
+      var porcentaje = document.getElementById("porcentaje");
+      var barra = document.getElementById("barra-progreso");
+      var width = 10;
+      var id = setInterval(frame, 70);
+
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+        } else {
+          if (width < 30) {
+            msg.innerHTML = "Analizando composicion atomica...";
+            etapa.innerHTML = "(1/3)";
+          } else if (width > 30 && width < 60) {
+            msg.innerHTML = "Conectando con el portal de destino...";
+            etapa.innerHTML = "(2/3)";
+          } else if (width > 60) {
+            msg.innerHTML = "Teletransportando...";
+            etapa.innerHTML = "(3/3)";
+          }
+          width++;
+          barra.style.width = width + '%';
+          porcentaje.innerHTML = width * 1 + '%';
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body class="body-corto">
+  <header id="header-teletransporte">
+    <div id="div-header-teletransporte">
+      <h2>PROCESO DE TELETRANSPORTACDION</h2>
+      <p>Por favor, no se mueva durante todo el proceso.</p>
+      <p>El proceso durara unos segundos...</p>
+    </div>
+  </header>
+  <div class="wrapper-main">
+    <div class="wrapper-centrado">
+      <h1><span id="mensaje-teletransporte"></span><span id="etapa-teletransporte"></span></h1>
+      <div id="div-barra-progreso">
+        <span id="porcentaje"></span>
+        <div id="barra-progreso"></div>
+      </div>
+      <p>Gracias por usar nuestros servicios. Tenga buen viaje.</p>
+    </div>
+  </div>
+  <footer class="wrapper-flex">
+
+
+
+  </footer>
+
+</body>
+
+</html>
