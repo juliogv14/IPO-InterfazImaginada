@@ -9,7 +9,6 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  /*max-width: 78em;*/
 }
 
 a {
@@ -17,23 +16,20 @@ a {
   color: inherit;
 }
 
-
-/*#header {
-  margin-bottom: 0.5em;
-  height: 60px
-}
-*/
-
 #header h3 span {
   padding-left: 1em;
 }
 
+#header h3 {
+  margin-bottom: 0.5em;
+}
+
 .header {
-  height: 45px;
+  min-height: 45px;
   vertical-align: text-bottom;
   background-color: rgba(70, 100, 150, 0.8);
   padding: 5px;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 
 .header h2 {
@@ -171,7 +167,6 @@ a {
 
 .disponible:hover {
   background: linear-gradient(to bottom, #b3d9ff 5%, #4da6ff 100%);
-  /*  background: linear-gradient(to bottom, #99b399 5%, #00b300 100%);*/
   background-color: #476e9e;
 }
 
@@ -185,6 +180,15 @@ a {
 
 footer {
   width: 100%;
+}
+
+footer a {
+  margin-top: 0em;
+  color: #ccc;
+}
+
+footer a:hover {
+  color: #fff;
 }
 
 #div-leyenda {
@@ -278,8 +282,6 @@ img {
   text-align: center;
 }
 
-#div-index {}
-
 #div-header-teletransporte {
   margin: auto;
   vertical-align: text-bottom;
@@ -315,5 +317,18 @@ img {
   width: 30%;
   font-size: 1.6em;
   font-family: 'Orbitron', 'Open Sans';
+  font-weight: bold;
+}
+
+#div-info {
+  margin: auto;
+  width: 50%
+}
+
+#div-info-atras .material-icons {
+  font-size: 50px;
+}
+
+.info-span {
   font-weight: bold;
 }

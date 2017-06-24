@@ -26,6 +26,11 @@
       function frame() {
         if (width >= 100) {
           clearInterval(id);
+          msg.innerHTML = "Completado! ";
+          etapa.innerHTML = "";
+          document.getElementById("div-barra-progreso").style.display = 'none';
+
+          setTimeout(volver, 3000);
         } else {
           if (width < 30) {
             msg.innerHTML = "Analizando composicion atomica...";
@@ -41,8 +46,13 @@
           barra.style.width = width + '%';
           porcentaje.innerHTML = width * 1 + '%';
         }
+
+        function volver() {
+          window.location.replace("index.html");
+        }
       }
     }
+
   </script>
 
 </head>
